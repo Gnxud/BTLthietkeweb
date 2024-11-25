@@ -1,0 +1,801 @@
+* {
+    margin: 0;
+  }
+  
+  body {
+    font-family: "Roboto", sans-serif;
+  }
+  
+  .navbar {
+    width: 100%;
+    height: 50px;
+    background-color: black;
+    position: sticky;
+    top: 0;
+  }
+  
+  .navbar-container {
+    display: flex;
+    align-items: center;
+    padding: 0 50px;
+    height: 100%;
+    color: white;
+    font-family: "Sen", sans-serif;
+  }
+  
+  .logo-container {
+    flex: 1;
+  }
+  
+  .logo {
+    font-size: 30px;
+    color: #4dbf00;
+  }
+  
+  .menu-container {
+    flex: 6;
+  }
+  
+  .menu-list {
+    display: flex;
+    list-style: none;
+  }
+  .menu-list a:link{
+    background-color: transparent;
+    color: white;
+    text-decoration: none;
+  }
+  .menu-list a:visited{
+    color:white;
+    background-color: transparent;
+    text-decoration: none;
+    }
+  
+  .menu-list-item {
+    margin-right: 30px;
+  }
+  
+  .menu-list-item.active {
+    font-weight: bold;
+  }
+  .profile-container {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .profile-text-container {
+    margin: 0 20px;
+  }
+  
+  .profile-picture {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .toggle {
+    width: 40px;
+    height: 20px;
+    background-color: white;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+  }
+  
+  .toggle-icon {
+    color: goldenrod;
+  }
+  
+  .toggle-ball {
+    width: 18px;
+    height: 18px;
+    background-color: black;
+    position: absolute;
+    right: 1px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 1s ease all;
+  }
+  
+  .sidebar {
+    width: 50px;
+    height: 100%;
+    background-color: black;
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px;
+  }
+  
+  .left-menu-icon {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 40px;
+  }
+  
+  .container {
+    background-color: #151515;
+    min-height: calc(100vh - 50px);
+    color: white;
+  }
+  
+  .content-container {
+    margin-left: 50px;
+  }
+  
+  /* Featured Content */
+.featured-content {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    padding: 120px 35px;
+    color: #fff;
+    text-align: left;
+    border-radius: 15px;
+    margin-top: 70px;  /* Thêm khoảng cách từ top */
+}
+
+  
+  .featured-title {
+    width: 200px;
+  }
+  
+  .featured-desc {
+    width: 500px;
+    color: lightgray;
+    margin: 30px 0;
+  }
+  
+  .featured-button {
+    background-color: #4dbf00;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-weight: bold;
+  }
+  
+  .movie-list-container {
+    padding: 0 20px;
+  }
+  
+  .movie-list-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .movie-list {
+    display: flex;
+    align-items: center;
+    height: 300px;
+    transform: translateX(0);
+    transition: all 1s ease-in-out;
+  }
+  
+  .movie-list-item {
+    margin-right: 30px;
+    position: relative;
+  }
+  
+  .movie-list-item:hover .movie-list-item-img {
+    transform: scale(1.2);
+    margin: 0 30px;
+    opacity: 0.5;
+  }
+  
+  .movie-list-item:hover .movie-list-item-title,
+  .movie-list-item:hover .movie-list-item-desc,
+  .movie-list-item:hover .movie-list-item-button {
+    opacity: 1;
+  }
+  
+  .movie-list-item-img {
+    transition: all 1s ease-in-out;
+    width: 270px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+  
+  .movie-list-item-title {
+    background-color: #333;
+    padding: 0 10px;
+    font-size: 32px;
+    font-weight: bold;
+    position: absolute;
+    top: 10%;
+    left: 50px;
+    opacity: 0;
+    transition: 1s all ease-in-out;
+  }
+  
+  .movie-list-item-desc {
+    background-color: #333;
+    padding: 10px;
+    font-size: 14px;
+    position: absolute;
+    top: 30%;
+    left: 50px;
+    width: 230px;
+    opacity: 0;
+    transition: 1s all ease-in-out;
+  }
+  
+  .movie-list-item-button {
+    padding: 10px;
+    background-color: #4dbf00;
+    color: white;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    bottom: 20px;
+    left: 50px;
+    opacity: 0;
+    transition: 1s all ease-in-out;
+  }
+  
+  .arrow {
+    font-size: 120px;
+    position: absolute;
+    top: 90px;
+    right: 0;
+    color: lightgray;
+    opacity: 0.5;
+    cursor: pointer;
+  }
+  
+  .container.active {
+    background-color: white;
+  }
+  
+  .movie-list-title.active {
+    color: black;
+  }
+  
+  .navbar-container.active {
+    background-color: white;
+  
+    color: black;
+  }
+  
+  .sidebar.active{
+      background-color: white;
+  }
+  
+  .left-menu-icon.active{
+      color: black;
+  }
+  
+  .toggle.active{
+      background-color: black;
+  }
+  
+  .toggle-ball.active{
+      background-color: white;
+      transform: translateX(-20px);
+  }
+  
+  @media only screen and (max-width: 940px){
+      .menu-container{
+          display: none;
+      }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+  /* Navbar container */
+.navbar {
+    width: 100%;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    padding: 10px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Menu container styles */
+.menu-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Style for menu list */
+.menu-list {
+    list-style: none;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+}
+
+/* Menu items */
+.menu-list-item {
+    padding: 15px 25px;
+    cursor: pointer;
+    position: relative;
+    color: #fff;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+/* Active menu item */
+.menu-list-item.active {
+    background-color: #4CAF50; /* Highlight active item */
+    border-radius: 5px;
+    transform: scale(1.05);
+}
+
+/* Hover effect for menu item */
+.menu-list-item:hover {
+    background-color: #444;
+    transform: scale(1.05); /* Slight scaling effect */
+}
+
+/* Submenu (hidden by default) */
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 10px 0;
+    z-index: 200;
+}
+
+/* Submenu items */
+.submenu-item {
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for submenu item */
+.submenu-item:hover {
+    background-color: #555;
+}
+
+/* Show submenu on hover */
+.menu-list-item:hover .submenu {
+    display: block;
+}
+
+/* Styling for the logo container */
+.logo-container h1 {
+    font-family: 'Sen', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: #fff;
+    margin-right: 40px;
+}
+
+/* Styling for profile section (optional) */
+.profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.profile-picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.profile-text-container {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+    .menu-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu-list-item {
+        padding: 12px 20px;
+    }
+
+    .submenu {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Profile Container */
+.profile-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative; /* Để submenu có thể được căn chỉnh ở vị trí đúng */
+    margin-left: 20px;
+}
+
+/* Submenu Profile */
+.profile-submenu {
+    display: none; /* Ẩn submenu ban đầu */
+    position: absolute;
+    top: 100%; /* Vị trí submenu dưới phần profile */
+    left: 0;
+    background-color: #333;
+    width: 200px;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    list-style: none;
+    padding: 10px 0;
+    z-index: 100;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.profile-submenu-item {
+    padding: 10px 20px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.profile-submenu-item:hover {
+    background-color: #444;
+}
+
+/* Hiển thị submenu khi hover lên profile */
+.profile-container:hover .profile-submenu {
+    display: block;
+    opacity: 1;
+}
+
+/* Toggle cho icon caret khi submenu mở hoặc đóng */
+.profile-container .profile-text-container i {
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+}
+
+.profile-container:hover .profile-text-container i {
+    transform: rotate(180deg); /* Xoay caret khi hover */
+}
+
+
+
+/* Theme Toggle Container */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 50px;
+  height: 30px;
+  background-color: #ccc;
+  border-radius: 30px;
+  transition: background-color 0.3s ease;
+}
+
+/* Theme Toggle checkbox itself (hidden) */
+.checkbox {
+  opacity: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+/* The label for the toggle switch */
+.checkbox-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  border-radius: 30px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* The circle ball inside the toggle switch */
+.ball {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 20px;
+  height: 20px;
+  background-color: #333;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+/* Icon styling for sun and moon */
+.checkbox-label i {
+  color: #888;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+/* When checkbox is checked (dark mode) */
+.checkbox:checked + .checkbox-label {
+  background-color: #2a2a2a;
+}
+
+/* Move the ball to the right when checked */
+.checkbox:checked + .checkbox-label .ball {
+  transform: translateX(20px);
+}
+
+/* Change icons when dark mode is active */
+.checkbox:checked + .checkbox-label i.fas.fa-moon {
+  color: #f1c40f; /* Yellow for moon */
+}
+
+.checkbox:checked + .checkbox-label i.fas.fa-sun {
+  color: #f39c12; /* Bright yellow for sun */
+}
+
+/* Style for light mode (ball in left side, sun visible) */
+.checkbox:checked + .checkbox-label i.fas.fa-moon {
+  display: none;
+}
+
+/* Style for dark mode (ball in right side, moon visible) */
+.checkbox:not(:checked) + .checkbox-label i.fas.fa-sun {
+  display: none;
+}
+
+/* Hover effect to show interaction */
+.checkbox-label:hover {
+  background-color: #e3e3e3;
+}
+
+/* Định dạng container của các gói thành viên */
+.membership-container {
+  background-color: #151515;  /* Nền tối */
+  color: white;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+/* Tiêu đề của phần đăng ký gói thành viên */
+.membership-container h2 {
+  font-size: 36px;
+  margin-bottom: 40px;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Bố trí các gói thành viên bằng flexbox */
+.membership-plans {
+  display: flex;
+  justify-content: center; /* Căn giữa các gói thành viên */
+  gap: 30px;
+  flex-wrap: wrap;  /* Cho phép các gói thành viên xuống dòng khi màn hình nhỏ */
+  margin-top: 30px;
+}
+
+/* Kiểu dáng cho từng gói thành viên */
+.membership-plan {
+  background-color: #333;
+  border-radius: 10px;
+  padding: 30px;
+  width: 30%; /* Căn chỉnh các gói thành viên thành 3 cột */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  min-width: 280px; /* Đảm bảo các gói không quá nhỏ trên màn hình nhỏ */
+}
+
+/* Khi hover vào các gói thành viên */
+.membership-plan:hover {
+  transform: translateY(-10px); /* Di chuyển nhẹ lên trên khi hover */
+  background-color: #4CAF50;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Định dạng tên gói và mô tả */
+.membership-plan h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.membership-plan .membership-desc {
+  font-size: 14px;
+  margin-bottom: 15px;
+  line-height: 1.5;
+  color: #ccc;
+}
+
+/* Định dạng giá của gói thành viên */
+.membership-plan .membership-price {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #ffcc00; /* Sử dụng màu vàng cho giá */
+}
+
+/* Định dạng nút đăng ký */
+.membership-btn {
+  padding: 10px 20px;
+  background-color: #4dbf00;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  width: 100%; /* Nút chiếm toàn bộ chiều rộng của mỗi gói */
+  margin-top: 15px;  /* Tạo khoảng cách giữa giá và nút */
+}
+
+/* Hiệu ứng hover cho nút đăng ký */
+.membership-btn:hover {
+  background-color: #45a049;
+}
+
+/* Đảm bảo rằng các gói sẽ xếp đẹp trên màn hình nhỏ */
+@media (max-width: 768px) {
+  .membership-plans {
+      flex-direction: column; /* Chuyển sang dạng cột khi màn hình nhỏ */
+      align-items: center;
+  }
+
+  .membership-plan {
+      width: 80%;  /* Các gói thành viên chiếm 80% chiều rộng trên màn hình nhỏ */
+      margin-bottom: 30px;
+  }
+}
+/* Phần Thông Tin Liên Hệ */
+.contact-info {
+  background-color: #222;  /* Nền tối */
+  color: #fff;
+  padding: 40px 20px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* Bố trí nội dung thông tin liên hệ */
+.contact-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Tiêu đề của phần thông tin liên hệ */
+.contact-info h3 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Định dạng các mục liên hệ */
+.contact-info p {
+  font-size: 16px;
+  margin: 10px 0;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+/* Responsive - Đảm bảo phần liên hệ dễ đọc trên thiết bị di động */
+@media (max-width: 768px) {
+  .contact-info {
+      padding: 30px 15px;
+  }
+  
+  .contact-info p {
+      font-size: 14px;
+  }
+}
+/* Phần Quản lý Tài Khoản */
+.user-actions {
+  background-color: #333; /* Nền tối */
+  color: white;
+  padding: 20px;
+  margin-top: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Tiêu đề phần quản lý tài khoản */
+.user-actions h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/* Danh sách liên kết */
+.user-actions ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Các mục trong danh sách */
+.user-actions ul li {
+  margin: 10px 0;
+}
+
+/* Liên kết */
+.user-actions a {
+  color: #00bcd4; /* Màu của liên kết */
+  font-size: 18px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* Màu khi hover */
+.user-actions a:hover {
+  color: #ff9800; /* Màu khi hover */
+  text-decoration: underline;
+}
